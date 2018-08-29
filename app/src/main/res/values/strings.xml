@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">AISummarizer</string>
+    <string name="loginCredentialsSaved">Credentials are saved</string>
+</resources>
