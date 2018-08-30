@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.aisummarizer.aisummarizer">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
@@ -20,7 +24,12 @@
         </activity>
         <activity android:name=".home.MainActivity" />
         <activity android:name=".login.LoginActivity" />
-        <activity android:name=".Registration.registration"></activity>
+        <activity android:name=".Registration.registration" />
+
+        <activity
+            android:name=".aisummarizer.AISummarizerActivity"
+            android:parentActivityName=".home.MainActivity"
+            tools:targetApi="jelly_bean" />
     </application>
 
 </manifest>

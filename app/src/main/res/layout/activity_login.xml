@@ -1,117 +1,108 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/backgroundColor"
     android:gravity="center"
     android:orientation="vertical"
-    android:background="@color/backgroundColor"
     tools:context=".login.LoginActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-
+        android:layout_height="wrap_content"
+        android:layout_gravity="center">
 
         <EditText
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:background="@color/white"
             android:id="@+id/userNameEditText"
-            android:hint="Enter Username"
-            android:paddingLeft="15dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginRight="10dp"
-            />
-
-        <EditText
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:background="@color/white"
-            android:id="@+id/passwordEditText"
-            android:hint=" Enter Password"
-            android:layout_below="@+id/userNameEditText"
-            android:layout_marginTop="16dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
+            android:layout_marginTop="20dp"
+            android:background="@color/white"
+            android:hint="Enter Username"
+            android:maxLines="1"
+            android:text="shami@maily.com"
+            android:paddingLeft="15dp"
+            android:paddingStart="15dp"
+            android:singleLine="true" />
 
-            />
+        <EditText
+            android:id="@+id/passwordEditText"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_below="@+id/userNameEditText"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="16dp"
+            android:background="@color/white"
+            android:hint="Enter Password"
+            android:maxLines="1"
+            android:text="12345"
+            android:textIsSelectable="false"
+            android:paddingLeft="15dp"
+            android:paddingStart="15dp"
+            android:singleLine="true" />
+
         <Button
+            android:id="@+id/loginButton"
             android:layout_width="130dp"
             android:layout_height="40dp"
-            android:id="@+id/loginButton"
             android:layout_below="@id/passwordEditText"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="20dp"
-            android:text="LOGIN"
-            android:textStyle="bold"
             android:background="@color/white"
+            android:text="LOGIN"
             android:textColor="@color/backgroundColor"
-            />
+            android:textStyle="bold" />
+
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/loginButton"
-            android:layout_marginBottom="20dp"
-            android:gravity="center"
             android:id="@+id/registerHereLayout"
-            >
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_below="@id/loginButton"
+            android:layout_marginTop="10dp"
+            android:gravity="center">
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Are you a new user?"
                 android:id="@+id/areYouAnewUser"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="Are you a new user?"
                 android:textAlignment="center"
-                android:layout_marginTop="10dp"
-                android:textStyle="bold"
                 android:textColor="@color/white"
+                android:textStyle="bold" />
 
-                />
-
-           <RelativeLayout
-               android:layout_width="wrap_content"
-               android:layout_height="60dp"
-               android:background="@color/gray"
-               >
-
-
-               <Button
-                   android:layout_width="wrap_content"
-                   android:layout_height="40dp"
-                   android:id="@+id/loadButton"
-                   android:layout_marginLeft="10dp"
-                   android:layout_marginTop="10dp"
-                   android:text="Register here"
-                   android:textColor="@color/white"
-                   android:onClick="load"
-                   android:textStyle="bold"
-                   android:background="@color/transparent"
-                   android:paddingRight="15dp"
-                   android:paddingLeft="15dp"
-
-                   />
-
-               <TextView
-                   android:layout_width="130dp"
-                   android:layout_height="1dp"
-                   android:background="@color/white"
-                   android:layout_below="@+id/loadButton"
-                   android:layout_alignLeft="@+id/loadButton"
-                   android:paddingLeft="15dp"
-                   />
-
-           </RelativeLayout>
-
-
+            <TextView
+                android:id="@+id/register"
+                style="@style/Widget.AppCompat.Button.Borderless.Colored"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:autoLink="all"
+                android:gravity="center"
+                android:linksClickable="false"
+                android:onClick="load"
+                android:paddingLeft="25dp"
+                android:paddingRight="25dp"
+                android:selectAllOnFocus="false"
+                android:text="@string/register_here"
+                android:textAllCaps="true"
+                android:textColor="@color/white"
+                android:textStyle="bold" />
 
         </LinearLayout>
 
-
-
     </RelativeLayout>
 
-</LinearLayout>
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@color/transparent"
+        android:visibility="gone" />
+</FrameLayout>

@@ -1,4 +1,17 @@
 <resources>
     <string name="app_name">AISummarizer</string>
+
+    <!--Authentication Validation errors-->
+    <string name="error_email_required">"Email address is required"</string>
+    <string name="error_required_password">Password is required</string>
+
+    <!--Toasts-->
     <string name="loginCredentialsSaved">Credentials are saved</string>
+    <string name="oops">Oops!, Check your Internet.</string>
+    <string name="failure">Please try after some time.</string>
+
+    <!--Labels-->
+    <string name="register_here">Register here</string>
+    <string name="lb_multi_lang">Multilingual Text Summarization</string>
+    <string name="lb_summarize">Summarize</string>
 </resources>

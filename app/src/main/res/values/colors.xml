@@ -17,6 +17,8 @@
     <color name="megenta">#FF00FF</color>
     <color name="maroon">#800000</color>
     <color name="alive">#808000</color>
+    <color name="black">#000000</color>
+    <color name="colorWhite10">#0affffff</color>
 
 
 </resources>
