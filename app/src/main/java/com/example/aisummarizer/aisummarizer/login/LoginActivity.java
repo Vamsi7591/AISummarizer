@@ -15,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.aisummarizer.aisummarizer.R;
+import com.example.aisummarizer.aisummarizer.Registration.RegistrationActivity;
 import com.example.aisummarizer.aisummarizer.home.MainActivity;
 import com.example.aisummarizer.aisummarizer.service_calls.AISummarizer;
 import com.example.aisummarizer.aisummarizer.service_calls.request_builder.LoginRequest;
@@ -52,7 +53,6 @@ public class LoginActivity extends SuperCompatActivity {
     }
 
     private void initializeVariable() {
-        Button login_button = (Button) findViewById(R.id.loginButton);
         userNameInput = (EditText) findViewById(R.id.userNameEditText);
         passwordInput = (EditText) findViewById(R.id.passwordEditText);
         loginButton = (Button) findViewById(R.id.loginButton);
@@ -61,7 +61,7 @@ public class LoginActivity extends SuperCompatActivity {
 
         register.setText(Html.fromHtml("<p><u>Register here</u></p>"));
 
-        login_button.setOnClickListener(new View.OnClickListener() {
+        loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -144,11 +144,15 @@ public class LoginActivity extends SuperCompatActivity {
 
 
     public void load(View view) {
-        SharedPreferences sharedPref = getSharedPreferences("userInfo", Context.MODE_PRIVATE);
+
+        Intent home_screen = new Intent(getApplicationContext(), RegistrationActivity.class);
+        startActivity(home_screen);
+
+        /*SharedPreferences sharedPref = getSharedPreferences("userInfo", Context.MODE_PRIVATE);
 
         String userName = sharedPref.getString("username", "");
         String password = sharedPref.getString("password", "");
 
-        Toast.makeText(this, (userName + " " + password), Toast.LENGTH_LONG).show();
+        Toast.makeText(this, (userName + " " + password), Toast.LENGTH_LONG).show();*/
     }
 }

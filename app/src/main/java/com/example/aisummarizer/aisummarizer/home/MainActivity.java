@@ -6,7 +6,9 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.aisummarizer.aisummarizer.R;
+import com.example.aisummarizer.aisummarizer.about.AboutActivity;
 import com.example.aisummarizer.aisummarizer.aisummarizer.AISummarizerActivity;
+import com.example.aisummarizer.aisummarizer.faq.FaqActivity;
 import com.example.aisummarizer.aisummarizer.login.LoginActivity;
 import com.example.aisummarizer.aisummarizer.service_calls.AISummarizer;
 import com.example.aisummarizer.aisummarizer.super_class.SuperCompatActivity;
@@ -22,9 +24,14 @@ public class MainActivity extends SuperCompatActivity {
 
     /*Click actions*/
     public void about(View view) {
+        Intent main_activity = new Intent(getApplicationContext(), AboutActivity.class);
+        startActivity(main_activity);
+
     }
 
     public void faq(View view) {
+        Intent main_activity = new Intent(getApplicationContext(), FaqActivity.class);
+        startActivity(main_activity);
     }
 
     public void summarize(View view) {

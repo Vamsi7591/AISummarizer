@@ -7,6 +7,10 @@
     android:background="@drawable/background"
     tools:context=".home.MainActivity">
 
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:background="@drawable/header_image" />
 
     <TextView
         android:id="@+id/tv1"
@@ -16,7 +20,8 @@
         android:layout_marginBottom="10dp"
         android:gravity="center"
         android:text="@string/app_name"
-        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+        android:textColor="@color/black" />
 
     <TextView
         android:id="@+id/tv2"
@@ -26,14 +31,16 @@
         android:layout_marginBottom="20dp"
         android:gravity="center"
         android:text="@string/lb_multi_lang"
-        android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" />
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+        android:textColor="@color/black" />
 
     <ImageView
         android:id="@+id/logo"
         android:layout_width="200dp"
         android:layout_height="200dp"
         android:layout_centerInParent="true"
-        android:background="@drawable/ic_launcher_background" />
+        android:background="@drawable/logo_big"
+        android:scaleType="fitXY" />
 
     <Button
         android:id="@+id/summarizeBtn"
@@ -43,7 +50,7 @@
         android:layout_marginLeft="40dp"
         android:layout_marginRight="40dp"
         android:layout_marginTop="20dp"
-        android:background="@color/maroon"
+        android:background="@drawable/cornor_radius_button"
         android:onClick="summarize"
         android:text="@string/lb_summarize"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Headline"
@@ -51,24 +58,24 @@
 
     <Button
         android:id="@+id/about"
-        android:layout_width="?attr/actionBarSize"
-        android:layout_height="wrap_content"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:layout_below="@+id/summarizeBtn"
         android:layout_marginLeft="40dp"
         android:layout_marginStart="40dp"
-        android:onClick="about"
-        android:layout_marginTop="20dp"
-        android:background="@color/blue" />
+        android:layout_marginTop="30dp"
+        android:background="@drawable/about_icon"
+        android:onClick="about" />
 
     <Button
         android:id="@+id/help"
-        android:layout_width="?attr/actionBarSize"
-        android:layout_height="wrap_content"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:onClick="faq"
         android:layout_below="@+id/summarizeBtn"
         android:layout_marginRight="40dp"
-        android:layout_marginTop="20dp"
-        android:background="@color/green" />
+        android:layout_marginTop="30dp"
+        android:background="@drawable/faq_icon"
+        android:onClick="faq" />
 </RelativeLayout>
