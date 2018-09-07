@@ -97,6 +97,7 @@ public class LoginActivity extends SuperCompatActivity {
         aiSummarizer = retrofit.create(AISummarizer.class);
     }
 
+    /*Service calls*/
     private void authenticate(LoginRequest request) {
 
         try {

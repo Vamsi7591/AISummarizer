@@ -1,6 +1,7 @@
 package com.example.aisummarizer.aisummarizer.home;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -12,6 +13,8 @@ import com.example.aisummarizer.aisummarizer.faq.FaqActivity;
 import com.example.aisummarizer.aisummarizer.login.LoginActivity;
 import com.example.aisummarizer.aisummarizer.service_calls.AISummarizer;
 import com.example.aisummarizer.aisummarizer.super_class.SuperCompatActivity;
+
+import java.util.Locale;
 
 public class MainActivity extends SuperCompatActivity {
 

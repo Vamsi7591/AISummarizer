@@ -11,10 +11,9 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import com.example.aisummarizer.aisummarizer.LangModel;
 import com.example.aisummarizer.aisummarizer.R;
+import com.example.aisummarizer.aisummarizer.models.LangModel;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -56,7 +55,7 @@ public class SpinnerAdapter extends BaseAdapter implements android.widget.Spinne
         GradientDrawable gd = new GradientDrawable();
 //        gd.setColor(0xef2e83fa); // Changes this drawable to use a single color instead of a gradient
         gd.setCornerRadius(0);
-        gd.setStroke(1, 0xef2e83fa);
+        gd.setStroke(1, activity.getResources().getColor(R.color.backgroundColor));
         gd.setSize(ViewGroup.LayoutParams.MATCH_PARENT, 1);
         gd.setShape(GradientDrawable.RECTANGLE);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {

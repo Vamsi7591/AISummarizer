@@ -9,29 +9,29 @@ import com.google.gson.annotations.SerializedName;
  * Login and Registration*/
 public class AuthResponse {
 
-    @Nullable
+
     @SerializedName("success")
     public boolean success;
 
-    @Nullable
+
     @SerializedName("description")
     public String description;
 
-    @Nullable
+
     public boolean isSuccess() {
         return success;
     }
 
-    public void setSuccess(@Nullable boolean success) {
+    public void setSuccess(  boolean success) {
         this.success = success;
     }
 
-    @Nullable
+
     public String getDescription() {
         return description;
     }
 
-    public void setDescription(@Nullable String description) {
+    public void setDescription(  String description) {
         this.description = description;
     }
 }

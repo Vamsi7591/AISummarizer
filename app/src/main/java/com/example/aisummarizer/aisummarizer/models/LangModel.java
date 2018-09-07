@@ -1,4 +1,4 @@
-package com.example.aisummarizer.aisummarizer;
+package com.example.aisummarizer.aisummarizer.models;
 
 public class LangModel {
 

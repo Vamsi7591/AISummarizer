@@ -2,9 +2,9 @@ package com.example.aisummarizer.aisummarizer.service_calls.request_builder;
 
 public class LoginRequest {
 
-    public String email;
+    private String email;
 
-    public String password;
+    private String password;
 
 
     public String getEmail() {
