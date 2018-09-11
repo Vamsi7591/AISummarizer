@@ -23,12 +23,14 @@ import com.example.aisummarizer.aisummarizer.service_calls.response_builder.Auth
 import com.example.aisummarizer.aisummarizer.super_class.SuperCompatActivity;
 import com.example.aisummarizer.aisummarizer.utils.ApplicationHolder;
 import com.example.aisummarizer.aisummarizer.utils.DialogListener;
+import com.google.gson.Gson;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
-import retrofit2.converter.jackson.JacksonConverterFactory;
+import retrofit2.converter.gson.GsonConverterFactory;
+//import retrofit2.converter.jackson.JacksonConverterFactory;
 
 public class LoginActivity extends SuperCompatActivity {
 
@@ -91,7 +93,7 @@ public class LoginActivity extends SuperCompatActivity {
 
         retrofit = new Retrofit.Builder()
                 .baseUrl(ApplicationHolder.baseUrl)
-                .addConverterFactory(JacksonConverterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create(new Gson()))
                 .build();
 
         aiSummarizer = retrofit.create(AISummarizer.class);

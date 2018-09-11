@@ -36,5 +36,5 @@ public interface AISummarizer {
     Call<List<SummarizerModel>> summarizerWeb(@Query("language") String language,
                                            @Query("style") String style,
                                            @Query("domains") String domains,
-                                           @Query("content") String content);
+                                           @Query("url") String url);
 }

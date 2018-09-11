@@ -5,6 +5,8 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 
     <application
         android:name=".utils.App"
@@ -53,6 +55,11 @@
             android:name=".faq.FaqActivity"
             android:label="FAQ"
             android:parentActivityName=".home.MainActivity"
+            tools:targetApi="jelly_bean" />
+        <activity
+            android:name=".full_screen.FullScreenActivity"
+            android:label="@string/app_name"
+            android:parentActivityName=".aisummarizer.AISummarizerActivity"
             tools:targetApi="jelly_bean" />
     </application>
 

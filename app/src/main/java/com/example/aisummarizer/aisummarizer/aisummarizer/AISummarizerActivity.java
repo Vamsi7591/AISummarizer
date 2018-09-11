@@ -1,38 +1,57 @@
 package com.example.aisummarizer.aisummarizer.aisummarizer;
 
+import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.Intent;
+import android.inputmethodservice.Keyboard;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Parcelable;
+import android.util.Log;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import com.example.aisummarizer.aisummarizer.models.LangModel;
 import com.example.aisummarizer.aisummarizer.R;
 import com.example.aisummarizer.aisummarizer.adapters.SpinnerAdapter;
+import com.example.aisummarizer.aisummarizer.full_screen.FullScreenActivity;
+import com.example.aisummarizer.aisummarizer.home.MainActivity;
+import com.example.aisummarizer.aisummarizer.models.LangModel;
 import com.example.aisummarizer.aisummarizer.service_calls.AISummarizer;
 import com.example.aisummarizer.aisummarizer.service_calls.request_builder.SummarizerRequest;
 import com.example.aisummarizer.aisummarizer.service_calls.response_builder.SummarizerModel;
 import com.example.aisummarizer.aisummarizer.super_class.SuperCompatActivity;
 import com.example.aisummarizer.aisummarizer.utils.ApplicationHolder;
+import com.example.aisummarizer.aisummarizer.utils.FileHelper;
+import com.google.gson.Gson;
+import com.jaiselrahman.filepicker.activity.FilePickerActivity;
+import com.jaiselrahman.filepicker.config.Configurations;
+import com.jaiselrahman.filepicker.model.MediaFile;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
+import okhttp3.OkHttpClient;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
-import retrofit2.converter.jackson.JacksonConverterFactory;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class AISummarizerActivity extends SuperCompatActivity implements View.OnClickListener, AdapterView.OnItemSelectedListener {
 
     TextView contextLabel, clearTv, summarizeTv, summarizeValueTv;
     ImageView fullScreenTv;
     LinearLayout textTv, fileTv, webTv;
+    ProgressBar mProgressBar;
+    public ProgressDialog pDialog;
     EditText contextEt;
     List<LangModel> langModels;
     Spinner spinnerLang;
@@ -61,6 +80,8 @@ public class AISummarizerActivity extends SuperCompatActivity implements View.On
         clearTv = (TextView) findViewById(R.id.clearTv);
         summarizeTv = (TextView) findViewById(R.id.summarizeTv);
         summarizeValueTv = (TextView) findViewById(R.id.summarizeValueTv);
+
+        mProgressBar = (ProgressBar) findViewById(R.id.progressBar);
 
 
         textTv.setOnClickListener(this);
@@ -109,12 +130,23 @@ public class AISummarizerActivity extends SuperCompatActivity implements View.On
             contextEt.setMinHeight(300);
         }
 
+        OkHttpClient client = new OkHttpClient.Builder()
+                .connectTimeout(1000, TimeUnit.SECONDS)
+                .readTimeout(1000, TimeUnit.SECONDS).build();
+
         retrofit = new Retrofit.Builder()
                 .baseUrl(ApplicationHolder.baseUrl2)
-                .addConverterFactory(JacksonConverterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create(new Gson()))
+                .client(client)
                 .build();
 
         aiSummarizer = retrofit.create(AISummarizer.class);
+
+        pDialog = new ProgressDialog(AISummarizerActivity.this);
+        pDialog.setMessage("Summarizing...");
+        pDialog.setIndeterminate(false);
+        pDialog.setCancelable(false);
+//        pDialog.show();
     }
 
     int selectedPosition = 0;
@@ -149,6 +181,20 @@ public class AISummarizerActivity extends SuperCompatActivity implements View.On
                     textTv.setBackground(null);
                     webTv.setBackground(null);
                 }
+
+                Intent intent = new Intent(this, FilePickerActivity.class);
+                intent.putExtra(FilePickerActivity.CONFIGS, new Configurations.Builder()
+                        .setCheckPermission(true)
+                        .setShowImages(false)
+                        .setShowAudios(false)
+                        .setShowVideos(false)
+                        .enableImageCapture(false)
+                        .setMaxSelection(1)
+                        .setSkipZeroSizeFiles(true)
+                        .setShowFiles(true)
+                        .setSuffixes("txt")
+                        .build());
+                startActivityForResult(intent, 7591);
                 break;
             case R.id.webTv:
 
@@ -172,6 +218,16 @@ public class AISummarizerActivity extends SuperCompatActivity implements View.On
 
             case R.id.fullScreenTv:
 
+                //1. Convert object to JSON string
+                Gson gson = new Gson();
+                String json = gson.toJson(summarizerModelsResponse);
+                //System.out.println(json);
+
+                Intent intent1 = new Intent(AISummarizerActivity.this, FullScreenActivity.class);
+                intent1.putExtra("S_Value", contextEt.getText().toString());
+//                intent.putParcelableArrayListExtra("S_Object", json);
+//                intent.putParcelableArrayListExtra("S_Object", (ArrayList<? extends Parcelable>) summarizerModelsResponse);
+                startActivity(intent1);
                 break;
 
             case R.id.clearTv:
@@ -182,13 +238,25 @@ public class AISummarizerActivity extends SuperCompatActivity implements View.On
 //            case text = "http://dev.aisummarizer.com/summarizer/online/TextSummarizer"
 //            case file = "http://dev.aisummarizer.com/summarizer/online/FileSummarizer"
 //            case web = "http://dev.aisummarizer.com/summarizer/online/WebSummarizer"
-                SummarizerRequest request = new SummarizerRequest("en", "json.english", "none", contextEt.getText().toString());
 
 
-                if (selectedPosition == 2)
+                closeKeyboard();
+//                mProgressBar.setVisibility(ProgressBar.VISIBLE);
+
+                // dismiss the dialog once got all details
+                if (pDialog.isShowing()) {
+                    pDialog.dismiss();
+                } else
+                    pDialog.show();
+
+
+                if (selectedPosition == 2) {
+                    SummarizerRequest request = new SummarizerRequest("en", "json.english", "none", null, contextEt.getText().toString());
                     summarizeWeb(request);
-                else
+                } else {
+                    SummarizerRequest request = new SummarizerRequest("en", "json.english", "none", contextEt.getText().toString());
                     summarizeText(request);
+                }
 
                 break;
             default:
@@ -196,6 +264,36 @@ public class AISummarizerActivity extends SuperCompatActivity implements View.On
         }
     }
 
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == 7591 && data != null) {
+//            MEDIA_FILES
+            ArrayList<MediaFile> files = data.getParcelableArrayListExtra(FilePickerActivity.MEDIA_FILES);
+            //Do something with files
+            Log.v("TAG", " --> " + files.size());
+
+            if (files.size() != 0)
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        contextEt.setText(FileHelper.ReadFile(AISummarizerActivity.this, files.get(0).getPath(), files.get(0).getName()));
+                    }
+                });
+        }
+    }
+
+    private void closeKeyboard() {
+        View view = this.getCurrentFocus();
+        if (view != null) {
+            InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+            if (imm != null) {
+                imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+            }
+        }
+    }
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -208,6 +306,8 @@ public class AISummarizerActivity extends SuperCompatActivity implements View.On
     }
 
     /*Service calls*/
+    List<SummarizerModel> summarizerModelsResponse;
+
     private void summarizeText(SummarizerRequest request) {
 
         try {
@@ -221,7 +321,9 @@ public class AISummarizerActivity extends SuperCompatActivity implements View.On
                 @Override
                 public void onResponse(Call<List<SummarizerModel>> call, Response<List<SummarizerModel>> response) {
 
-                    List<SummarizerModel> summarizerModelsResponse = response.body();
+                    summarizerModelsResponse = new ArrayList<>();
+                    summarizerModelsResponse = response.body();
+                    ApplicationHolder.summarizerModelList = summarizerModelsResponse;
                     if (summarizerModelsResponse != null) {
                         runOnUiThread(new Runnable() {
                             @Override
@@ -240,16 +342,29 @@ public class AISummarizerActivity extends SuperCompatActivity implements View.On
                             }
                         });
                     }
+//                    mProgressBar.setVisibility(ProgressBar.INVISIBLE);
+                    // dismiss the dialog once got all details
+                    if (pDialog.isShowing()) {
+                        pDialog.dismiss();
+                    }
                 }
 
                 @Override
                 public void onFailure(Call<List<SummarizerModel>> call, Throwable t) {
-
+//                    mProgressBar.setVisibility(ProgressBar.INVISIBLE);
+                    // dismiss the dialog once got all details
+                    if (pDialog.isShowing()) {
+                        pDialog.dismiss();
+                    }
                 }
             });
 
         } catch (Exception e) {
-
+//            mProgressBar.setVisibility(ProgressBar.INVISIBLE);
+            // dismiss the dialog once got all details
+            if (pDialog.isShowing()) {
+                pDialog.dismiss();
+            }
         }
     }
 
@@ -261,13 +376,15 @@ public class AISummarizerActivity extends SuperCompatActivity implements View.On
             Call<List<SummarizerModel>> summarizerResponse = aiSummarizer.summarizerWeb(request.getLanguage(),
                     request.getStyle(),
                     request.getDomains(),
-                    request.getContent());
+                    request.getUrl());
 
             summarizerResponse.enqueue(new Callback<List<SummarizerModel>>() {
                 @Override
                 public void onResponse(Call<List<SummarizerModel>> call, Response<List<SummarizerModel>> response) {
 
-                    List<SummarizerModel> summarizerModelsResponse = response.body();
+                    summarizerModelsResponse = new ArrayList<>();
+                    summarizerModelsResponse = response.body();
+                    ApplicationHolder.summarizerModelList = summarizerModelsResponse;
                     if (summarizerModelsResponse != null) {
                         runOnUiThread(new Runnable() {
                             @Override
@@ -276,25 +393,40 @@ public class AISummarizerActivity extends SuperCompatActivity implements View.On
                                 StringBuilder builder = new StringBuilder();
                                 String prefix = " ";
                                 for (SummarizerModel model : summarizerModelsResponse) {
-                                    if (Float.parseFloat(model.getLevel()) >= 90.0) {
-                                        builder.append(model.getText());
-                                        builder.append(prefix);
-                                    }
+                                    if (model.getLevel() != null)
+                                        if (Float.parseFloat(model.getLevel()) >= 90.0) {
+                                            builder.append(model.getText());
+                                            builder.append(prefix);
+                                        }
                                 }
                                 summarizeValueTv.setText(builder.toString());
                             }
                         });
                     }
+
+//                    mProgressBar.setVisibility(ProgressBar.INVISIBLE);
+                    // dismiss the dialog once got all details
+                    if (pDialog.isShowing()) {
+                        pDialog.dismiss();
+                    }
                 }
 
                 @Override
                 public void onFailure(Call<List<SummarizerModel>> call, Throwable t) {
-
+//                    mProgressBar.setVisibility(ProgressBar.INVISIBLE);
+                    // dismiss the dialog once got all details
+                    if (pDialog.isShowing()) {
+                        pDialog.dismiss();
+                    }
                 }
             });
 
         } catch (Exception e) {
-
+//            mProgressBar.setVisibility(ProgressBar.INVISIBLE);
+            // dismiss the dialog once got all details
+            if (pDialog.isShowing()) {
+                pDialog.dismiss();
+            }
         }
     }
 

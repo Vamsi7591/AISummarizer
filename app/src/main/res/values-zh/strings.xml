@@ -1,9 +1,8 @@
 <resources>
-    <string name="app_name">AI résumé</string>
+    <string name="app_name">AISummarizer</string>
 
     <!--Authentication Validation errors-->
     <string name="error_email_required">"Email address is required"</string>
-    <string name="error_required_password">Password is required</string>
 
     <!--Toasts-->
     <string name="loginCredentialsSaved">Credentials are saved</string>
@@ -12,26 +11,27 @@
 
     <!--Labels-->
     <string name="lb_registration">Register here</string>
-    <string name="lb_multi_lang">Résumé de texte multilingue</string>
-    <string name="lb_summarize">Résumer</string>
+    <string name="lb_multi_lang">Multilingual Text Summarization</string>
+    <string name="lb_summarize">Summarize</string>
 
     <string name="about">Your multilingual text summarization software, AISummarizer, offers a more efficient method of text reading! Your business requires the reading of a considerable number of documents: we have the solution to reduce up to 80% of your time reading and get the gist of the content. It is very easy to use, the software produces a summary of the text of your documents and web pages as well as a synthesis of the entire contents of a folder on your computer with just one click. Also, through the API of AISummarizer you can have real-time summaries of your search results on top search engines as well as the summaries of social networks toolss links. Through years of research, the method developed by AISummarizer can reproduce a summary consistent with the original meaning through a sophisticated linguistic analysis of text. Efficient both in local and foreign languages, AISummarizer is associated with a language translation module. You will get the summary of the content in 21 different languages. AISummarizer is the first software of text summarization to offer to the user to get instantly all images, videos, photos of a web page by only one click. Just submit a web page and click the button « Only images ».</string>
     <string name="lb_about">About</string>
-    <string name="lb_your_text">Your Text</string>
+    <string name="lb_your_text">"文本 : "</string>
     <string name="lb_your_file">Your File</string>
     <string name="lb_your_url">Your URL</string>
-    <string name="lb_text">Texte</string>
-    <string name="lb_file">Fichier</string>
-    <string name="lb_web_page">Page web</string>
-    <string name="lb_select">sélectionner</string>
-    <string name="lb_cancel">Annuler</string>
-    <string name="lb_delete">effacer</string>
-    <string name="text_description">1. Choisir la langue à résumer dans la liste des langues proposées.\n2. Coller ou écrire votre texte puis cliquez sur le bouton “Résumer”.\n3. Un résumé automatique de 25% est généré par défault. Vous pouvez par la suite augmenter ou diminuer ce pourcentage après avoir cliquer sur l’icône à droite du bouton “Résumer”.</string>
-    <string name="file_description">1. Commencez par choisir votre document à résumer à partir d’une connexion iTunes.\n2. Sélectionnez AISummarizer dans iTunes, vous verrez à droite une proposition d’un bouton d’ajout. En cliquant sur le bouton + le choix d’un fichier “.TXT” peut être soumis depuis votre smartphone ou votre ordinateur.\n3.Sélectionnez votre langue et votre fichier et procédez au résumé automatique comme indiqué dans “TEXTE” ci-dessus.</string>
-    <string name="web_description">1. Copiez une adresse Web (URL) ou un lien à résumer.\n2. Sélectionnez la langue de l’URL à résumer.\n3. Collez l’URL à l’endroit prévu puis cliquez sur le bouton “Résumer”.</string>
-    <string name="for_summarize_description">En choisissant le bouton “Résumer”, vous pouvez résumer des textes par copié/collé (onglet \'Texte'), des URLs web (onglet 'Page Web')</string>
-    <string name="text_language">Langue du texte</string>
-    <string name="clear_text">Effacer le texte</string>
+    <string name="lb_text">文本</string>
+    <string name="lb_file">文件</string>
+    <string name="lb_web_page">网页</string>
+    <string name="lb_select">选择</string>
+    <string name="lb_cancel">取消</string>
+    <string name="lb_delete">删除</string>
+    <string name="text_description">1. Choose your language from the list. \n\n2. Put your text , select and summarize  Button. \n\n3. You will receive 25% below your basic summary . You can maximize your screen , you can change the outline % of crack , according to the list % .</string>
+    <string name="file_description">1. You need to select the files before using the iTunes Connect.\n\n2. Choose AISummarizer iTunes , crack and you can click the + button to select the .TXT files from your computer to be ( + more ) to get and press the button on the right \n\n3. You can find a file in the file selection options . Choose your language and file summarize, Remaining the same or text .</string>
+    <string name="web_description">1. Copy a link to a web page.\n\n2. Select language of the same or a Web page link. \n\n3. The attached summary. The rest of the things are the same or text file.</string>
+    <string name="for_summarize_description">Once you select  “Summarize” you will get Text, File, Web.</string>
+    <string name="text_language">文本语言</string>
+    <string name="clear_text">Clear Text</string>
+
     <string name="faq"><i><font color="#80ff0516">For Summarize:</font></i>
         Once you select  “Summarize” you will get Text, File, Web.
 
@@ -51,6 +51,7 @@ If you have any questions or feedback please feel free and contact by an:
 contact@aisummarizer.com
 
 https://www.aisummarizer.com</string>
+    <string name="error_required_password">Password is required</string>
     <string name="lb_are_you_a_new_user">Are you a new user?</string>
     <string name="lb_register_here">Register here</string>
     <string name="lb_per_summarize">%  Summarize</string>

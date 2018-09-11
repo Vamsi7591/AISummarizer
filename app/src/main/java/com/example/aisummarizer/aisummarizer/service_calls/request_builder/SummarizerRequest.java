@@ -6,12 +6,21 @@ public class SummarizerRequest {
     private String style;
     private String domains;
     private String content;
+    private String url;
 
     public SummarizerRequest(String language, String style, String domains, String content) {
         this.language = language;
         this.style = style;
         this.domains = domains;
         this.content = content;
+    }
+
+    public SummarizerRequest(String language, String style, String domains, String content, String url) {
+        this.language = language;
+        this.style = style;
+        this.domains = domains;
+        this.content = content;
+        this.url = url;
     }
 
     public SummarizerRequest() {
@@ -47,5 +56,13 @@ public class SummarizerRequest {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 }

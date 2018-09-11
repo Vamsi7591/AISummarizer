@@ -1,14 +1,11 @@
 package com.example.aisummarizer.aisummarizer.service_calls.response_builder;
 
-import android.support.annotation.Nullable;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+//import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.google.gson.annotations.SerializedName;
 
 // to prevent specified fields from being serialized or deserialized
 // (i.e. not include in JSON output; or being set even if they were included)
-@JsonIgnoreProperties({"word-count", "char-count"})
+//@JsonIgnoreProperties({"word-count", "char-count", "weight"})
 
 // To ignore any unknown properties in JSON input without exception:
 //@JsonIgnoreProperties(ignoreUnknown=true)

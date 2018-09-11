@@ -3,7 +3,6 @@
 
     <!--Authentication Validation errors-->
     <string name="error_email_required">"Email address is required"</string>
-    <string name="error_required_password">Password is required</string>
 
     <!--Toasts-->
     <string name="loginCredentialsSaved">Credentials are saved</string>
@@ -11,7 +10,6 @@
     <string name="failure">Please try after some time.</string>
 
     <!--Labels-->
-    <string name="register_here">Register here</string>
     <string name="lb_registration">Register here</string>
     <string name="lb_multi_lang">Multilingual Text Summarization</string>
     <string name="lb_summarize">Summarize</string>
@@ -53,4 +51,8 @@ If you have any questions or feedback please feel free and contact by an:
 contact@aisummarizer.com
 
 https://www.aisummarizer.com</string>
+    <string name="error_required_password">Password is required</string>
+    <string name="lb_are_you_a_new_user">Are you a new user?</string>
+    <string name="lb_register_here">Register here</string>
+    <string name="lb_per_summarize">%  Summarize</string>
 </resources>

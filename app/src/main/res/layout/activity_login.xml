@@ -71,7 +71,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                android:text="Are you a new user?"
+                android:text="@string/lb_are_you_a_new_user"
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textStyle="bold" />
@@ -88,7 +88,7 @@
                 android:paddingLeft="25dp"
                 android:paddingRight="25dp"
                 android:selectAllOnFocus="false"
-                android:text="@string/register_here"
+                android:text="@string/lb_register_here"
                 android:textAllCaps="true"
                 android:textColor="@color/white"
                 android:textStyle="bold" />
