@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:stripe="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.stripe.android.view.CardInputWidget
+        android:id="@+id/card_input_widget"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:theme="@style/EditTextOverride"
+        android:visibility="gone"
+        stripe:cardTextErrorColor="@android:color/holo_orange_dark"
+        stripe:cardTint="@android:color/holo_purple" />
+
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/holderNameIL"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/add_card_total_margin"
+        android:layout_marginRight="@dimen/add_card_total_margin"
+        android:layout_marginStart="@dimen/add_card_total_margin"
+        android:layout_marginTop="@dimen/add_card_total_margin"
+        android:imeOptions="actionNext">
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/holderName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/hint_card_holder_name"
+            android:imeOptions="flagNavigateNext"
+            android:maxLines="1"
+            android:nextFocusForward="@+id/add_source_card_entry_widget"
+            android:singleLine="true" />
+
+    </android.support.design.widget.TextInputLayout>
+
+    <com.stripe.android.view.CardMultilineWidget
+        android:id="@+id/add_source_card_entry_widget"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/add_card_total_margin"
+        android:layout_marginLeft="@dimen/add_card_total_margin"
+        android:layout_marginRight="@dimen/add_card_total_margin"
+        android:layout_marginStart="@dimen/add_card_total_margin" />
+
+    <Button
+        android:id="@+id/donate"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/cornor_radius_button"
+        android:onClick="donate"
+        android:text="@string/lb_donate"
+        android:textColor="@color/white" />
+
+</LinearLayout>

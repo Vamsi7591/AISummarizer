@@ -14,8 +14,20 @@
     <string name="lb_multi_lang">Multilingual Text Summarization</string>
     <string name="lb_summarize">Summarize</string>
 
-    <string name="about">Your multilingual text summarization software, AISummarizer, offers a more efficient method of text reading! Your business requires the reading of a considerable number of documents: we have the solution to reduce up to 80% of your time reading and get the gist of the content. It is very easy to use, the software produces a summary of the text of your documents and web pages as well as a synthesis of the entire contents of a folder on your computer with just one click. Also, through the API of AISummarizer you can have real-time summaries of your search results on top search engines as well as the summaries of social networks toolss links. Through years of research, the method developed by AISummarizer can reproduce a summary consistent with the original meaning through a sophisticated linguistic analysis of text. Efficient both in local and foreign languages, AISummarizer is associated with a language translation module. You will get the summary of the content in 21 different languages. AISummarizer is the first software of text summarization to offer to the user to get instantly all images, videos, photos of a web page by only one click. Just submit a web page and click the button « Only images ».</string>
-    <string name="lb_about">About</string>
+    <string name="about">다중언어 문장 요약 소프트웨어인 AISummarizer는 더욱 효율적인 문장 독해 방식을 제공합니다!
+          사업 운영에서는 많은 양의 문서를 읽는 것이 요구됩니다. 본사는 최대 80%의 문서 독서 시간을
+          줄이고 내용의 중점 포인트를 요약해주는 솔루션을 제공합니다.
+          사용하기 매우 쉬운 이 소프트웨어는 단 한번의 클릭으로 문서, 웹 페이지의 문장을 요약해주며 또
+          한 컴퓨터 폴더의 전체 내용물을 종합하기도 합니다…
+          또한 위젯 “요약 검색”을 통해 구글, 빙, 야후, 바이두 검색 엔진 및 위키피디어 검색의 각 결과 요
+          약을 실시간으로 액세스할 수 있습니다.
+          AISummarizer 회사가 수년간에 걸친 연구끝에 개발한 이 방식은 문장의 정교한 분석을 통해 원래
+          의 뜻과 함께 각 문장을 요약합니다.
+          현지와 외국 언어 모두에 효율적으로 적용되는 AISummarizer는 언어 번역 모듈과 연관이 되어 있
+
+          습니다. 20 언어로 내용의 요약을 얻습니다.
+    </string>
+    <string name="lb_about">소개</string>
     <string name="lb_your_text">Your Text</string>
     <string name="lb_your_file">Your File</string>
     <string name="lb_your_url">Your URL</string>
@@ -25,34 +37,36 @@
     <string name="lb_select">고르다</string>
     <string name="lb_cancel">취소</string>
     <string name="lb_delete">지우다</string>
-    <string name="text_description">1. Choose your language from the list. \n\n2. Put your text , select and summarize  Button. \n\n3. You will receive 25% below your basic summary . You can maximize your screen , you can change the outline % of crack , according to the list % .</string>
-    <string name="file_description">1. You need to select the files before using the iTunes Connect.\n\n2. Choose AISummarizer iTunes , crack and you can click the + button to select the .TXT files from your computer to be ( + more ) to get and press the button on the right \n\n3. You can find a file in the file selection options . Choose your language and file summarize, Remaining the same or text .</string>
-    <string name="web_description">1. Copy a link to a web page.\n\n2. Select language of the same or a Web page link. \n\n3. The attached summary. The rest of the things are the same or text file.</string>
-    <string name="for_summarize_description">Once you select  “Summarize” you will get Text, File, Web.</string>
     <string name="text_language">텍스트 언어</string>
     <string name="clear_text">Clear Text</string>
 
-    <string name="faq"><i><font color="#80ff0516">For Summarize:</font></i>
-        Once you select  “Summarize” you will get Text, File, Web.
+    <string name="faq_text1">For Summarize:</string>
+    <string name="faq_text2">Once you select  “Summarize” you will get Text, File, Web.</string>
+    <string name="faq_text3">1. Choose your language from the list.</string>
+    <string name="faq_text4">2. Put your text , select and summarize  Button.</string>
+    <string name="faq_text5">3. You will receive 20% below your basic summary. You can maximize your screen, you can change the outline % of crack, according to the list %.</string>
+    <string name="faq_text6">1. You need to select the files before using the iTunes Connect.</string>
+    <string name="faq_text7">2. Choose AISummarizer iTunes, crack and you can click the + button to select the .TXT files from your computer to be ( + more ) to get and press the button on the right.</string>
+    <string name="faq_text8">3. You can find a file in the file selection options. Choose your language and file summarize, Remaining the same or text.</string>
+    <string name="faq_text9">1. Copy a link to a web page.</string>
+    <string name="faq_text10">2. Select language of the same or a Web page link.</string>
+    <string name="faq_text11">3. The attached summary. The rest of the things are the same or text file.</string>
+    <string name="faq_text12">If you have any questions or feedback please feel free and contact by an:</string>
+    <string name="faq_text13">contact@aisummarizer.com</string>
+    <string name="faq_text14">https://www.aisummarizer.com</string>
 
-<i>Text</i>
-1. Choose your language from the list. \n 2. Put your text , select and summarize  Button. \n 3. You will receive 20% below your basic summary . You can maximize your screen , you can change the outline % of crack , according to the list % .
-
-<i>File</i>
-1. You need to select the files before using the iTunes Connect.\n2. Choose AISummarizer iTunes , crack and you can click the + button to select the .TXT files from your computer to be ( + more ) to get and press the button on the right \n3. You can find a file in the file selection options . Choose your language and file summarize, Remaining the same or text .
-
-<i>Web</i>
-1. Copy a link to a web page.\n2. Select language of the same or a Web page link. \n3. The attached summary. The rest of the things are the same or text file.
-
-
-If you have any questions or feedback please feel free and contact by an:
-
-
-contact@aisummarizer.com
-
-https://www.aisummarizer.com</string>
     <string name="error_required_password">Password is required</string>
     <string name="lb_are_you_a_new_user">Are you a new user?</string>
     <string name="lb_register_here">Register here</string>
     <string name="lb_per_summarize">%  Summarize</string>
+    <string name="lb_help">Help</string>
+    <string name="hint_web_page">https://aisummarizer.com</string>
+    <string name="lb_about_heading">About</string>
+    <string name="lb_contact_details">Contact Details</string>
+    <string name="contact_aisummarizer_com">contact@aisummarizer.com</string>
+    <string name="payment">Payment</string>
+    <string name="lb_donate">donate</string>
+    <string name="hint_card_holder_name">Card holder Name</string>
+    <string name="lb_proceed">Proceed</string>
+    <string name="err_stripe_payment">Your stripe live account is not connected. DO you wan\'t to connect it and make payment?</string>
 </resources>

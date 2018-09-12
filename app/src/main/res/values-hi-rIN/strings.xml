@@ -14,8 +14,12 @@
     <string name="lb_multi_lang">Multilingual Text Summarization</string>
     <string name="lb_summarize">Summarize</string>
 
-    <string name="about">Your multilingual text summarization software, AISummarizer, offers a more efficient method of text reading! Your business requires the reading of a considerable number of documents: we have the solution to reduce up to 80% of your time reading and get the gist of the content. It is very easy to use, the software produces a summary of the text of your documents and web pages as well as a synthesis of the entire contents of a folder on your computer with just one click. Also, through the API of AISummarizer you can have real-time summaries of your search results on top search engines as well as the summaries of social networks toolss links. Through years of research, the method developed by AISummarizer can reproduce a summary consistent with the original meaning through a sophisticated linguistic analysis of text. Efficient both in local and foreign languages, AISummarizer is associated with a language translation module. You will get the summary of the content in 21 different languages. AISummarizer is the first software of text summarization to offer to the user to get instantly all images, videos, photos of a web page by only one click. Just submit a web page and click the button « Only images ».</string>
-    <string name="lb_about">About</string>
+    <string name="about">आपके बहुभाषी पाठ सारांशीकरण सॉ टवेयर अथा त AISummarizer सेआपको पाठ को पढ़नेक अ धक बेहतर व ध उपल ध होती है!आपके कारोबार के लए बहुत बड़ी सं या म द तावेज को पढ़नेक आव यकता पड़ती है: पढ़नेम आपके लगने वालेसमय को 80% तक कम करनेऔर वषय व तुका सारांश त करनेकेलए हमारेपास हल उपल ध है। योग करनेम अ य धक सरल इस सॉ टवेयर वारा आपके द तावेज , वेब प ठृ के पाठ का सारांश
+          दान करनेके साथ साथ, मा एक लक सेआपके क यटरू पर उपल ध फो डर क पणू वषय व तुका संकलन भी उपल ध कराया जाता है......
+          आप ""सच टूसमराइज़ (सारांश के लए खोज)"" वजेट के मा यम से Google, Bing, Yahoo तथा Baidu सच इंिजन के येक प
+          रणाम के साथ साथ Wikipedia खोज का वा त वक समय म सारांश त कर सकतेह । वष के अनसंधान ु के मा यम से, AISummarizer वारा वक सत व ध सेपाठ के उ नत भाषाई व लेषण के मा यम सेमलू अथ के अनसार ु सारांश ततु कया जा सकता है। थानीय और वदेशी भाषाओ, ं दोनो म कायक ुशल AISummarizer भाषा अनवाद ु मॉ यलू सेसंबं धत है। आप 20 अलग-अलग भाषाओंम वषयव तुका सारांश त कर गे।
+    </string>
+    <string name="lb_about">हमारेबारेम</string>
     <string name="lb_your_text">Your Text</string>
     <string name="lb_your_file">Your File</string>
     <string name="lb_your_url">Your URL</string>
@@ -25,34 +29,36 @@
     <string name="lb_select">चुनते हैं</string>
     <string name="lb_cancel">रद्द करना</string>
     <string name="lb_delete">हटाना</string>
-    <string name="text_description">1. Choose your language from the list. \n\n2. Put your text , select and summarize  Button. \n\n3. You will receive 25% below your basic summary . You can maximize your screen , you can change the outline % of crack , according to the list % .</string>
-    <string name="file_description">1. You need to select the files before using the iTunes Connect.\n\n2. Choose AISummarizer iTunes , crack and you can click the + button to select the .TXT files from your computer to be ( + more ) to get and press the button on the right \n\n3. You can find a file in the file selection options . Choose your language and file summarize, Remaining the same or text .</string>
-    <string name="web_description">1. Copy a link to a web page.\n\n2. Select language of the same or a Web page link. \n\n3. The attached summary. The rest of the things are the same or text file.</string>
-    <string name="for_summarize_description">Once you select  “Summarize” you will get Text, File, Web.</string>
     <string name="text_language">पाठ भाषा</string>
     <string name="clear_text">Clear Text</string>
 
-    <string name="faq"><i><font color="#80ff0516">For Summarize:</font></i>
-        Once you select  “Summarize” you will get Text, File, Web.
+    <string name="faq_text1">For Summarize:</string>
+    <string name="faq_text2">Once you select  “Summarize” you will get Text, File, Web.</string>
+    <string name="faq_text3">1. Choose your language from the list.</string>
+    <string name="faq_text4">2. Put your text , select and summarize  Button.</string>
+    <string name="faq_text5">3. You will receive 20% below your basic summary. You can maximize your screen, you can change the outline % of crack, according to the list %.</string>
+    <string name="faq_text6">1. You need to select the files before using the iTunes Connect.</string>
+    <string name="faq_text7">2. Choose AISummarizer iTunes, crack and you can click the + button to select the .TXT files from your computer to be ( + more ) to get and press the button on the right.</string>
+    <string name="faq_text8">3. You can find a file in the file selection options. Choose your language and file summarize, Remaining the same or text.</string>
+    <string name="faq_text9">1. Copy a link to a web page.</string>
+    <string name="faq_text10">2. Select language of the same or a Web page link.</string>
+    <string name="faq_text11">3. The attached summary. The rest of the things are the same or text file.</string>
+    <string name="faq_text12">If you have any questions or feedback please feel free and contact by an:</string>
+    <string name="faq_text13">contact@aisummarizer.com</string>
+    <string name="faq_text14">https://www.aisummarizer.com</string>
 
-<i>Text</i>
-1. Choose your language from the list. \n 2. Put your text , select and summarize  Button. \n 3. You will receive 20% below your basic summary . You can maximize your screen , you can change the outline % of crack , according to the list % .
-
-<i>File</i>
-1. You need to select the files before using the iTunes Connect.\n2. Choose AISummarizer iTunes , crack and you can click the + button to select the .TXT files from your computer to be ( + more ) to get and press the button on the right \n3. You can find a file in the file selection options . Choose your language and file summarize, Remaining the same or text .
-
-<i>Web</i>
-1. Copy a link to a web page.\n2. Select language of the same or a Web page link. \n3. The attached summary. The rest of the things are the same or text file.
-
-
-If you have any questions or feedback please feel free and contact by an:
-
-
-contact@aisummarizer.com
-
-https://www.aisummarizer.com</string>
     <string name="error_required_password">Password is required</string>
     <string name="lb_are_you_a_new_user">Are you a new user?</string>
     <string name="lb_register_here">Register here</string>
     <string name="lb_per_summarize">%  Summarize</string>
+    <string name="lb_help">Help</string>
+    <string name="hint_web_page">https://aisummarizer.com</string>
+    <string name="lb_about_heading">About</string>
+    <string name="lb_contact_details">Contact Details</string>
+    <string name="contact_aisummarizer_com">contact@aisummarizer.com</string>
+    <string name="payment">Payment</string>
+    <string name="lb_donate">donate</string>
+    <string name="hint_card_holder_name">Card holder Name</string>
+    <string name="lb_proceed">Proceed</string>
+    <string name="err_stripe_payment">Your stripe live account is not connected. DO you wan\'t to connect it and make payment?</string>
 </resources>

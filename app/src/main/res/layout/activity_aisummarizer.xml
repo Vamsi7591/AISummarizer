@@ -152,10 +152,13 @@
         android:layout_margin="5dp"
         android:background="@drawable/bg_text_border"
         android:gravity="start"
-        android:inputType="textMultiLine"
-        android:padding="5dp"
         android:imeOptions="actionDone"
-        android:textColor="@color/black" />
+        android:inputType="textMultiLine"
+        android:maxHeight="300px"
+        android:minHeight="300px"
+        android:padding="5dp"
+        android:textColor="@color/black"
+        tools:ignore="PxUsage" />
 
     <LinearLayout
         android:id="@+id/ll1"
@@ -229,7 +232,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:indeterminate="false"
         android:background="@color/transparent"
+        android:indeterminate="false"
         android:visibility="gone" />
 </RelativeLayout>

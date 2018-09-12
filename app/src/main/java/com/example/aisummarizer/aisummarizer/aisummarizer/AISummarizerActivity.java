@@ -3,12 +3,12 @@ package com.example.aisummarizer.aisummarizer.aisummarizer;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
-import android.inputmethodservice.Keyboard;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Parcelable;
+import android.os.Environment;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.EditText;
@@ -21,7 +21,6 @@ import android.widget.TextView;
 import com.example.aisummarizer.aisummarizer.R;
 import com.example.aisummarizer.aisummarizer.adapters.SpinnerAdapter;
 import com.example.aisummarizer.aisummarizer.full_screen.FullScreenActivity;
-import com.example.aisummarizer.aisummarizer.home.MainActivity;
 import com.example.aisummarizer.aisummarizer.models.LangModel;
 import com.example.aisummarizer.aisummarizer.service_calls.AISummarizer;
 import com.example.aisummarizer.aisummarizer.service_calls.request_builder.SummarizerRequest;
@@ -30,10 +29,9 @@ import com.example.aisummarizer.aisummarizer.super_class.SuperCompatActivity;
 import com.example.aisummarizer.aisummarizer.utils.ApplicationHolder;
 import com.example.aisummarizer.aisummarizer.utils.FileHelper;
 import com.google.gson.Gson;
-import com.jaiselrahman.filepicker.activity.FilePickerActivity;
-import com.jaiselrahman.filepicker.config.Configurations;
-import com.jaiselrahman.filepicker.model.MediaFile;
+import com.obsez.android.lib.filechooser.ChooserDialog;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -125,9 +123,26 @@ public class AISummarizerActivity extends SuperCompatActivity implements View.On
         spinnerLang.setSelection(3);
         selectedLang = new LangModel("English", "en");
 
-        if (contextEt != null) {
-            contextEt.setMaxHeight(300);
-            contextEt.setMinHeight(300);
+        try {
+            if (contextEt != null) {
+                /*ViewGroup.LayoutParams params = contextEt.getLayoutParams();
+                if (params != null) {
+                    params.width = ViewGroup.LayoutParams.MATCH_PARENT;
+                    params.height = ViewGroup.LayoutParams.WRAP_CONTENT;
+                } else
+                    params = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+
+                contextEt.setLayoutParams(params);
+                contextEt.setMaxHeight(300);
+                contextEt.setMinHeight(300);*/
+
+                String folder_main = "AISummarizer";
+
+                File f = new File(Environment.getExternalStorageDirectory().getAbsolutePath(), folder_main);
+                if (!f.exists()) f.mkdirs();
+            }
+        } catch (Exception e) {
+            Log.v("TAG", " --> " + e.getMessage());
         }
 
         OkHttpClient client = new OkHttpClient.Builder()
@@ -149,6 +164,7 @@ public class AISummarizerActivity extends SuperCompatActivity implements View.On
 //        pDialog.show();
     }
 
+
     int selectedPosition = 0;
 
     @Override
@@ -161,8 +177,7 @@ public class AISummarizerActivity extends SuperCompatActivity implements View.On
                 selectedPosition = 0;
                 contextLabel.setText(getResources().getString(R.string.lb_your_text));
                 contextEt.setText("");
-                contextEt.setMaxHeight(300);
-                contextEt.setMinHeight(300);
+                contextEt.setHint("");
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
                     textTv.setBackground(getResources().getDrawable(R.drawable.bg_text_border));
                     webTv.setBackground(null);
@@ -171,30 +186,36 @@ public class AISummarizerActivity extends SuperCompatActivity implements View.On
                 break;
             case R.id.fileTv:
 
+                closeKeyboard();
                 selectedPosition = 1;
                 contextEt.setText("");
+                contextEt.setHint("");
                 contextLabel.setText(getResources().getString(R.string.lb_your_file));
-                contextEt.setMaxHeight(300);
-                contextEt.setMinHeight(300);
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
                     fileTv.setBackground(getResources().getDrawable(R.drawable.bg_text_border));
                     textTv.setBackground(null);
                     webTv.setBackground(null);
                 }
 
-                Intent intent = new Intent(this, FilePickerActivity.class);
-                intent.putExtra(FilePickerActivity.CONFIGS, new Configurations.Builder()
-                        .setCheckPermission(true)
-                        .setShowImages(false)
-                        .setShowAudios(false)
-                        .setShowVideos(false)
-                        .enableImageCapture(false)
-                        .setMaxSelection(1)
-                        .setSkipZeroSizeFiles(true)
-                        .setShowFiles(true)
-                        .setSuffixes("txt")
-                        .build());
-                startActivityForResult(intent, 7591);
+                String path = Environment.getExternalStorageDirectory().getAbsolutePath() + "/" + "AISummarizer";
+                new ChooserDialog().with(this)
+                        .withFilter(false, false, "txt")//"jpg", "jpeg", "png"
+                        .withStartFile(path)
+                        .withResources(R.string.choose_file, R.string.title_choose, R.string.dialog_cancel)
+                        .withChosenListener(new ChooserDialog.Result() {
+                            @Override
+                            public void onChoosePath(String path, File pathFile) {
+//                                Toast.makeText(AISummarizerActivity.this, "FILE: " + path, Toast.LENGTH_SHORT).show();
+                                runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        contextEt.setText(FileHelper.ReadFile(AISummarizerActivity.this, path, path));
+                                    }
+                                });
+                            }
+                        })
+                        .build()
+                        .show();
                 break;
             case R.id.webTv:
 
@@ -203,9 +224,8 @@ public class AISummarizerActivity extends SuperCompatActivity implements View.On
                     @Override
                     public void run() {
                         contextEt.setText("");
+                        contextEt.setHint(getResources().getString(R.string.hint_web_page));
                         contextLabel.setText(getResources().getString(R.string.lb_your_url));
-                        contextEt.setMaxHeight(100);
-                        contextEt.setMinHeight(100);
                         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
                             webTv.setBackground(getResources().getDrawable(R.drawable.bg_text_border));
                             textTv.setBackground(null);
@@ -232,6 +252,7 @@ public class AISummarizerActivity extends SuperCompatActivity implements View.On
 
             case R.id.clearTv:
                 contextEt.setText("");
+                summarizeValueTv.setText("");
                 break;
 
             case R.id.summarizeTv:
@@ -261,27 +282,6 @@ public class AISummarizerActivity extends SuperCompatActivity implements View.On
                 break;
             default:
                 break;
-        }
-    }
-
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        if (requestCode == 7591 && data != null) {
-//            MEDIA_FILES
-            ArrayList<MediaFile> files = data.getParcelableArrayListExtra(FilePickerActivity.MEDIA_FILES);
-            //Do something with files
-            Log.v("TAG", " --> " + files.size());
-
-            if (files.size() != 0)
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        contextEt.setText(FileHelper.ReadFile(AISummarizerActivity.this, files.get(0).getPath(), files.get(0).getName()));
-                    }
-                });
         }
     }
 

@@ -53,13 +53,18 @@
             tools:targetApi="jelly_bean" />
         <activity
             android:name=".faq.FaqActivity"
-            android:label="FAQ"
+            android:label="@string/lb_help"
             android:parentActivityName=".home.MainActivity"
             tools:targetApi="jelly_bean" />
         <activity
             android:name=".full_screen.FullScreenActivity"
             android:label="@string/app_name"
             android:parentActivityName=".aisummarizer.AISummarizerActivity"
+            tools:targetApi="jelly_bean" />
+
+        <activity android:name=".donate.PaymentActivity"
+            android:label="@string/payment"
+            android:parentActivityName=".home.MainActivity"
             tools:targetApi="jelly_bean" />
     </application>
 

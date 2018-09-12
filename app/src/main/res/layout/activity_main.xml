@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rl"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background"
@@ -57,13 +58,27 @@
         android:textColor="@color/white" />
 
     <Button
+        android:id="@+id/donate"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_below="@+id/summarizeBtn"
+        android:layout_centerInParent="true"
+        android:layout_marginLeft="40dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/cornor_radius_button"
+        android:onClick="donate"
+        android:text="@string/lb_donate"
+        android:textColor="@color/white" />
+
+    <Button
         android:id="@+id/about"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_below="@+id/summarizeBtn"
         android:layout_marginLeft="40dp"
         android:layout_marginStart="40dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="?attr/actionBarSize"
         android:background="@drawable/about_icon"
         android:onClick="about" />
 
@@ -74,8 +89,9 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_below="@+id/summarizeBtn"
+        android:layout_marginEnd="40dp"
         android:layout_marginRight="40dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="?attr/actionBarSize"
         android:background="@drawable/faq_icon"
         android:onClick="faq" />
 </RelativeLayout>
