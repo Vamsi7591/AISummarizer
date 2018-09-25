@@ -11,7 +11,6 @@ import android.widget.Toast;
 import com.example.aisummarizer.aisummarizer.R;
 import com.example.aisummarizer.aisummarizer.super_class.SuperCompatActivity;
 import com.example.aisummarizer.aisummarizer.utils.Utility;
-import com.stripe.android.CustomerSession;
 import com.stripe.android.PaymentConfiguration;
 import com.stripe.android.Stripe;
 import com.stripe.android.TokenCallback;
@@ -19,10 +18,6 @@ import com.stripe.android.model.Card;
 import com.stripe.android.model.Token;
 import com.stripe.android.view.CardInputWidget;
 import com.stripe.android.view.CardMultilineWidget;
-
-import java.util.StringTokenizer;
-
-import static java.security.AccessController.getContext;
 
 public class PaymentActivity extends SuperCompatActivity {
 
@@ -39,7 +34,7 @@ public class PaymentActivity extends SuperCompatActivity {
     private static final String PUBLISHABLE_KEY =
             "pk_test_Vrd2blZ87ljzxBznvpLFnVon";//put your publishable key here
 
-    private String userSecretKey = "";
+    //private String userSecretKey = "";
 
     static final int PURCHASE_REQUEST = 37;
 
@@ -50,11 +45,11 @@ public class PaymentActivity extends SuperCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_payment);
 
-        holderNameIL = (TextInputLayout) findViewById(R.id.holderNameIL);
-        holderName = (TextInputEditText) findViewById(R.id.holderName);
+        holderNameIL = findViewById(R.id.holderNameIL);
+        holderName = findViewById(R.id.holderName);
 
-        mCardInputWidget = (CardInputWidget) findViewById(R.id.card_input_widget);
-        add_source_card_entry_widget = (CardMultilineWidget) findViewById(R.id.add_source_card_entry_widget);
+        mCardInputWidget = findViewById(R.id.card_input_widget);
+        add_source_card_entry_widget = findViewById(R.id.add_source_card_entry_widget);
 
         PaymentConfiguration.init(PUBLISHABLE_KEY);
 
@@ -114,14 +109,14 @@ public class PaymentActivity extends SuperCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (requestCode == PURCHASE_REQUEST
+        /*if (requestCode == PURCHASE_REQUEST
                 && resultCode == RESULT_OK
                 && data.getExtras() != null) {
             long price = data.getExtras().getLong(EXTRA_PRICE_PAID, -1L);
             if (price != -1L) {
                 //displayPurchase(price);
             }
-        }
+        }*/
     }
 
     private void setupCustomerSession() {
